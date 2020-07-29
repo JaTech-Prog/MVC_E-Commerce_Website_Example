@@ -1,0 +1,105 @@
+﻿@model MVCeTicaretRasim.Models.Customer
+@{
+    ViewBag.Title = "UserEdit";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align:center; font:bold; font-size:4vh;" class="ch-txt2">Kullanıcı Düzenle</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+
+
+            @using (Html.BeginForm("UserEdit", "AdminData", FormMethod.Post))
+            {
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">İsim: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label style="color:#dddada;">Soyisim: </label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Kulanıcı Adı: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", disabled = "disable" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Şifre:</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Yaş: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Adres: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextAreaFor(x => x.Address1, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Cep Telefonu: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Mobile1, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Doğum Tarihi: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.BirthDate, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" class="form-control btn btn-success" style="background-color:#1d116c;  border-color:#1a1157" value="Güncelle" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

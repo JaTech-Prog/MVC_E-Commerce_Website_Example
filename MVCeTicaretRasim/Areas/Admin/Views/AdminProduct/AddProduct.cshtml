@@ -1,0 +1,146 @@
+﻿@model MVCeTicaretRasim.Models.Product
+
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align: center; font: bold; font-size: 4vh;" class="ch-txt2">AddProduct</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+
+
+            @using (Html.BeginForm("AddProduct", "AdminProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Ürün Adı : </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" maxlength="80" name="ProductName" placeholder="İsminizi Giriniz" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label style="color:#dddada;">Supplier Name : </label>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control" name="SupplierID">
+                            <option value="1">Steam</option>
+                            <option value="7">Origin</option>
+                            <option value="8">Blizzard Entertainment</option>
+                            <option value="9">Uplay</option>
+                            <option value="10">Diğer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label style="color:#dddada;">Alt Kategori : </label>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control" name="SubCategoryID">
+                            <option value="1">Aksiyon-Açık Dünya-Survival</option>
+                            <option value="2">Spor-Yarış</option>
+                            <option value="3">Strateji-Şehir Kurma</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Fiyat : </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" step="any" name="UnitPrice" placeholder="Fiyatı giriniz" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Boyut :</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" maxlength="30" name="Size" placeholder="Boyutu giriniz (örn. 10GB)" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Stok Miktarı : </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="UnitsInStock" placeholder="Stok miktarını giriniz" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-1 col-md-offset-2">
+                            <label style="color:#dddada;">Mevcut : </label>
+                        </div>
+                        <div class="col-md-2" style="color:#dddada; text-align:right">
+                            Mevcut : <input type="checkbox" name="Available" />
+                        </div>
+                        <div class="col-md-2" style="color:#dddada;">
+                            Mevcut Değil : <input type="checkbox" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Ürün Resmi : </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" style="color:gray;" name="ImageUrl" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Alt Text : </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" maxlength="100" name="AltText" placeholder="Alt Text Giriniz" style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Kısa Açıklama : </label>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea type="text" class="form-control" maxlength="600" name="ShortDescription" placeholder="Kısa Açıklama Giriniz" style="text-align:center"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Uzun Açıklama : </label>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea type="text" class="form-control" maxlength="2000" name="LongDescription" placeholder="Uzun Açıklma Giriniz" style="text-align:center"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" style="background-color:#1d116c;  border-color:#1a1157" class="form-control btn btn-success" value="Onayla" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

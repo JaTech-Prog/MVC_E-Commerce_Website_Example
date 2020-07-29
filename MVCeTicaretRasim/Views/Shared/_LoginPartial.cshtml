@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity
+@using MVCeTicaretRasim.Models
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @if (Session["OnlineKullanici"] == null && Session["OnlineAdmin"] == null)
+        {
+            <li>@Html.ActionLink("Kayıt Ol", "Register", "Login", new { area = "" }, null)</li>
+            <li>@Html.ActionLink("Giriş", "Login", "Login", new { area = "" }, null)</li>
+        }
+        else if (Session["OnlineKullanici"] != null && Session["OnlineAdmin"] == null)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            <li><a class="btn btn-primary" style="color:white;" href="@Url.Action("Cart","Shopping",new { area=""})">Sepet <span class="badge">@db.OrderDetails.Where(x => x.CustomerID == TemporaryUserData.OnlineUserID && x.IsCompleted == false).ToList().Count</span></a></li>
+            <li style="margin-right:20px;"><a href="@Url.Action("Wishlist","Shopping",new { area=""})" class="btn btn-primary" style="color:white;">İstek Listesi <span class="badge">@db.Whislists.Where(x => x.CustomerID == TemporaryUserData.OnlineUserID).ToList().Count</span></a></li>
+            <li><a href="@Url.Action("UpdateProfile","Profile",new { area=""})">@Session["OnlineKullanici"]</a></li>
+            <li>@Html.ActionLink("Çıkış", "Logout", "Login")</li>
+        }
+        else if (Session["OnlineKullanici"] == null && Session["OnlineAdmin"] != null)
+        {
+            <li><a style="font-size:large;" href="@Url.Action("Index", "AdminHome",new { area = "Admin" })"><span style="margin-right:5px;" class="glyphicon glyphicon-home"></span> Admin Home</a></li>
+            <li><a href="@Url.Action("UpdateProfile","Profile",new { area=""})">@Session["OnlineAdmin"]</a></li>
+            <li><a href="@Url.Action("Logout","AdminLogin",new { area="Admin"})">Çıkış</a></li>
+        }
+        else
+        {
+            Session["OnlineKullanici"] = null;
+            Session["OnlineAdmin"] = null;          
+        }
+</ul>
+}

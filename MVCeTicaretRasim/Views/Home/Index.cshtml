@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <h3 style="color:#dddada;">
+            En Çok Satan Ürünler
+        </h3>
+
+        <ul class="nav nav-tabs" role="tablist" style="border-color:#8a89ea;">
+            <li role="presentation" class="active">
+                <a href="#aksiyon" aria-controls="aksiyon" style="color:#79add2; font-size:large;" role="tab" data-toggle="tab">Aksiyon-Açık Dünya-Survival</a>
+            </li>
+            <li role="presentation" >
+                <a href="#spor" aria-controls="spor" role="tab" style="color:#79add2; font-size:large;" data-toggle="tab">Spor-Yarış</a>
+            </li>
+            <li role="presentation">
+                <a href="#strateji" aria-controls="strateji" style="color:#79add2; font-size:large;" role="tab" data-toggle="tab">Strateji-Şehir Kurma</a>
+            </li>
+        </ul>
+        
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="aksiyon">
+                <div class="row" style="margin-top:10px;">
+                    @{
+                        foreach (var item in TempData["Aksiyon"] as IEnumerable<MVCeTicaretRasim.Models.Product>)
+                        {
+                            <div class="col-md-3">
+                                <div class="thumbnail" style=" border-color:#1a1157; background-color:#515d80;">
+                                    <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
+                                    <div class="caption">
+                                        <h4 style="height:55px; color:#c4e0f8">@item.ProductName - <b>@string.Format("{0:c2}", item.UnitPrice)</b></h4>
+                                        <p style="height:100px; color:#f0f7f1; overflow:auto;">@item.ShortDescription</p>
+                                        <a href="@Url.Action("ProductDetail","Products", new { id = item.ProductID})" class="btn btn-primary">Ürün Detayı</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="spor">
+                <div class="row" style="margin-top:10px;">
+                    @{
+                        foreach (var item in TempData["Spor"] as IEnumerable<MVCeTicaretRasim.Models.Product>)
+                        {
+                            <div class="col-md-3">
+                                <div class="thumbnail" style=" border-color:#1a1157; background-color:#515d80;">
+                                    <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
+                                    <div class="caption">
+                                        <h4 style="height:55px; color:#c4e0f8">@item.ProductName - <b>@string.Format("{0:c2}", item.UnitPrice)</b></h4>
+                                        <p style="height:100px; color:#f0f7f1; overflow:auto;">@item.ShortDescription</p>
+                                        <a href="@Url.Action("ProductDetail","Products", new { id = item.ProductID})" class="btn btn-primary">Ürün Detayı</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="strateji">
+                <div class="row" style="margin-top:10px;">
+                    @{
+                        foreach (var item in TempData["Strateji"] as IEnumerable<MVCeTicaretRasim.Models.Product>)
+                        {
+                            <div class="col-md-3">
+                                <div class="thumbnail" style=" border-color:#1a1157; background-color:#515d80;">
+                                    <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
+                                    <div class="caption">
+                                        <h4 style="height:55px; color:#c4e0f8">@item.ProductName - <b>@string.Format("{0:c2}", item.UnitPrice)</b></h4>
+                                        <p style="height:100px; color:#f0f7f1; overflow:auto;">@item.ShortDescription</p>
+                                        <a href="@Url.Action("ProductDetail","Products", new { id = item.ProductID})" class="btn btn-primary">Ürün Detayı</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div></div>

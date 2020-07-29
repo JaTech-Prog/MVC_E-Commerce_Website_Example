@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "ContinueShopping";
+}
+
+<h2 style="text-align:center; color:#dddada;">Siparişleriniz</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <table class="table table-bordered" style="background-color:#7c80c1; border:solid; border-color:#1a1157; ">
+            <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>Adet</th>
+                    <th>Tutar</th>
+                </tr>
+            </thead>
+            <tbody style="font-size:large">
+                @{
+                    foreach (var item in TempData["OrderDetails"] as IEnumerable<MVCeTicaretRasim.Models.OrderDetail>)
+                    {
+                        <tr>
+                            <td>@item.Product.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>@string.Format("{0:c2}", item.TotalAmount)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-3">
+        @Html.ActionLink("Sepeti Düzenle", "Cart", "Shopping", null, new { @class = "btn btn-warning form-control" })
+
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+        @Html.ActionLink("Devam Et", "OpenPaymentsPage", "Shopping", null, new { @class = "btn btn-primary form-control" })
+
+    </div>
+</div>
+

@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "ListAdmins";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align:center; font:bold; font-size:4vh;" class="ch-txt2">Admin Listesi</h2>
+
+<table class="table table-hover" style="background-color:#7c80c1; border:solid; border-color:#1a1157">
+    <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+        <tr style="overflow-y:auto;">
+            <td>
+                Admin ID
+            </td>
+            <td>
+                Admin Kullanıcı Adı
+            </td>
+            <td>
+                Adı
+            </td>
+            <td>
+                Soyadı
+            </td>
+            <td>
+                Yaşı
+            </td>
+            <td>
+                Cinsiyeti
+            </td>
+            <td>
+                E-mail
+            </td>
+            <td>
+                Adres
+            </td>
+            <td>
+                Telefon
+            </td> 
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in TempData["AdminList"] as IEnumerable<MVCeTicaretRasim.Models.AdminLogin>)
+            {
+                string gender = "";
+                if (item.AdminEmployee.Gender == true)
+                {
+                    gender = "Erkek";
+
+                }
+                else
+                {
+                    gender = "Kız";
+                }
+                <tr style="color:rgba(48, 44, 98, 0.91); font-weight:bold;">
+                    <td style="border-color:#1a1157">
+                        @item.EmpID
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.UserName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.AdminEmployee.FirstName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.AdminEmployee.LastName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.AdminEmployee.Age
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @gender
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.AdminEmployee.Email
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.AdminEmployee.Address
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.AdminEmployee.Phone
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

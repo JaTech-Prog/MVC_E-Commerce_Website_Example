@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Kullanıcılar";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align:center; font:bold; font-size:4vh;" class="ch-txt2">Kullanıcı Listesi</h2>
+
+<table class="table table-hover" style="background-color:#7c80c1; border:solid; border-color:#1a1157">
+    <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+        <tr style="overflow-y:auto;">
+            <td>
+                Kullanıcı Adı
+            </td>
+            <td>
+                Adı
+            </td>
+            <td>
+                Soyadı
+            </td>
+            <td>
+                Yaşı
+            </td>
+            <td>
+                Cinsiyeti
+            </td>
+            <td>
+                Doğum Tarihi
+            </td>
+            <td>
+                Ülke
+            </td>
+            <td>
+                Şehir / State
+            </td>
+            <td>
+                Posta Kodu
+            </td>
+            <td>
+                E-mail
+            </td>
+            <td>
+                Telefon
+            </td>
+            <td>
+                Son Giriş Tarihi
+            </td>
+            <td>
+                Oluşturulma Tarihi
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in TempData["UserList"] as IEnumerable<MVCeTicaretRasim.Models.Customer>)
+            {
+                string gender = "";
+                if (item.Gender == true)
+                {
+                    gender = "Erkek";
+
+                }
+                else
+                {
+                    gender = "Kız";
+                }
+                <tr style="color:rgba(48, 44, 98, 0.91); font-weight:bold;">
+                    <td style="border-color:#1a1157">
+                        @item.UserName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.FirstName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.LastName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.Age
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @gender
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.BirthDate
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.Country
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @string.Format("{0} / {1}", item.City, item.State)
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.PostalCode
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.Email
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.Mobile1
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.LastLogin
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.CreatedDate
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

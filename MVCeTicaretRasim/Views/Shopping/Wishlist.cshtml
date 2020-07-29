@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Wishlist";
+}
+
+<h2 style="text-align:center; color:#dddada;">İstek Listeniz <span class="glyphicon glyphicon-th-list"></span></h2>
+
+<table class="table table-hover" style="background-color:#7c80c1; border:solid; border-color:#1a1157">
+    <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+        <tr>
+            <td>
+                Sepete Ekle
+            </td>
+            <td>
+                Ürün Görseli
+            </td>
+            <td>
+                Ürün Adı
+            </td>
+            <td>
+                Ürün Fiyatı
+            </td>
+            <td>
+                Stok Miktarı
+            </td>
+            <td>
+                Listeden Çıkar
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            //decimal toplamTutar = 0;
+            foreach (var item in TempData["Wishlist"] as IEnumerable<MVCeTicaretRasim.Models.Wishlist>)
+            {
+                //toplamTutar += Convert.ToDecimal(item.Quantity * item.UnitPrice);
+                <tr style="color:rgba(48, 44, 98, 0.91); font-weight:bold;">
+                    <td style="border-color:#1a1157">
+                        <h2 style="text-align:center;"><a href="@Url.Action("AddToCartFromWishlist", new { id=item.ProductID})"><span class="glyphicon glyphicon-shopping-cart" style="color:#1d116c;"></span></a></h2>
+                    </td>
+
+                    <td style="border-color:#1a1157">
+                        <img src="@Url.Content(item.Product.ImageUrl)" alt="@Url.Content(item.Product.AltText)" class="img-thumbnail" style="background-color:#1a1157; border-color:blueviolet; width:60px;" />
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.Product.ProductName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @string.Format("{0:c2}", item.Product.UnitPrice)
+                    </td>
+                    <td style="border-color:#1a1157">
+
+                        @item.Product.UnitsInStock
+                    </td>
+                    <td style="border-color:#1a1157">
+                        <h2 style="text-align:center;"><a href="@Url.Action("RemoveFromWishlist",new { id =item.ProductID})"><span style="color:#1d116c;" class="glyphicon glyphicon-remove-sign"></span></a></h2>
+                    </td>
+                </tr>
+
+            }
+
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "En çok satılanlar";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align:center; font:bold; font-size:4vh;" class="ch-txt2">En Çok satılan 5 Ürün</h2>
+
+<table class="table table-hover" style="background-color:#7c80c1; border:solid; border-color:#1a1157">
+    <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+        <tr>
+            <td>
+                Ürün Görseli
+            </td>
+            <td>
+                Ürün Adı
+            </td>
+            <td>
+                Ürün Fiyatı
+            </td>
+            <td>
+                Satın Alınma
+            </td>
+            <td>
+                Stok Miktarı
+            </td>
+            <td>
+                Kazanılan Para
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            decimal[] toplamFiyat = new decimal[6];
+            decimal toplamKazanilan = 0;
+            int i = 0;
+            foreach (var item in TempData["TopSelling"] as IEnumerable<MVCeTicaretRasim.Models.Product>)
+            {
+                toplamFiyat[i] = Convert.ToDecimal(item.UnitOnOrder * item.UnitPrice);
+
+                <tr style="color:rgba(48, 44, 98, 0.91); font-weight:bold;">
+                    <td style="border-color:#1a1157">
+                        <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" class="img-thumbnail" style="background-color:#1a1157; border-color:blueviolet; width:60px;" />
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.ProductName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @string.Format("{0:c2}", item.UnitPrice)
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.UnitOnOrder
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.UnitsInStock
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @string.Format("{0:c2}", toplamFiyat[i])
+                    </td>
+                </tr>
+                toplamKazanilan += toplamFiyat[i];
+                i++;
+
+            }
+            <tr>
+                <td colspan="6" style="text-align:right; color:#1a1157; border-color:#1a1157;"><b>Toplam Kazanılan Para: @string.Format("{0:c2}", toplamKazanilan)</b></td>
+
+            </tr>
+        }
+    </tbody>
+</table>

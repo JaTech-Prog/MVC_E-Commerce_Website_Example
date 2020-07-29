@@ -1,0 +1,126 @@
+﻿@model MVCeTicaretRasim.Models.AdminLogin
+
+@{
+    ViewBag.Title = "AdminEdit";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align:center; font:bold; font-size:4vh;"  class="ch-txt2">Admin Düzenle</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+
+
+            @using (Html.BeginForm("AdminEdit", "AdminData", FormMethod.Post))
+            {
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Admin ID: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.LoginID, new { @class = "form-control", disabled = "disable" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label style="color:#dddada;">Admin Kullanıcı Adı: </label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Ad: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.AdminEmployee.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Soyad:</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.AdminEmployee.LastName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-2">
+                                <label style="color:#dddada;">Şifre: </label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor( x => x.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Adres: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextAreaFor(x => x.AdminEmployee.Address, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Cep Telefonu: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.AdminEmployee.Phone, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Doğum Tarihi: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.AdminEmployee.BirthDate, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Yaşı: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.AdminEmployee.Age, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">E-mail: </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.AdminEmployee.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" class="form-control btn btn-success" style="background-color:#1d116c;  border-color:#1a1157" value="Güncelle" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Giriş Ekranı";
+}
+
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                <div class="col-md-6 col-md-offset-3" style="text-align:center; color:#bab2ee; font-size:large; font:bold;">Hoşgeldiniz!</div>
+                <br />
+                <br />
+                <hr style="border-color:#8a89ea" />
+                <div class="row" style="margin-top:10px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-3">
+                            <label style="color:#dddada;">Kulanıcı Adı: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="userName" placeholder="Kullanıcı Adını Giriniz" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-3">
+                            <label style="color:#dddada;">Şifre:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" name="password" placeholder="Şifrenizi Giriniz" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-5">
+                            <input type="submit" class="form-control btn btn-success" style="background-color:#1d116c;   border-color:#1a1157" value="Giriş Yap" />
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

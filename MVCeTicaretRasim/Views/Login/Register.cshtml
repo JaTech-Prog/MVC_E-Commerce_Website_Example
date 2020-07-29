@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+            {<div class="row" style="margin-top:5px;">
+                <div class="form-group">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label style="color:#dddada;">İsim: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="FirstName" placeholder="İsminizi Giriniz" required style="text-align:center" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2 col-md-offset-2">
+                    <label style="color:#dddada;">Soyisim: </label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="LastName" placeholder="Soyisminizi Giriniz" required style="text-align:center" />
+                </div>
+            </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Kulanıcı Adı: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="UserName" placeholder="Kullanıcı Adını Giriniz" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Şifre:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" name="Password" placeholder="Şifrenizi Giriniz" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Yaş: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="Age" placeholder="Yaşınızı Giriniz" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Cinsiyet: </label>
+                        </div>
+                        <div class="col-md-2" style="color:#dddada; text-align:right">
+                            Erkek: <input type="checkbox" name="Gender" />
+                        </div>
+                        <div class="col-md-2" style="color:#dddada;">
+                            Kadın: <input type="checkbox"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Doğum Tarihi: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="date" class="form-control" name="BirthDate" style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">E-Mail: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" name="Email" placeholder="E-Mail Giriniz" style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Cep Telefonu: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="Mobile" placeholder="Cep Telefonu Giriniz" style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Adres: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea type="text" class="form-control" name="Address" placeholder="Adres Giriniz" style="text-align:center"> </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" class="form-control btn btn-success" value="Onayla" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

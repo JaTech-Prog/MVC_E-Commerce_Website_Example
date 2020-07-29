@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align:center; font:bold; font-family:'Century Gothic'; font-size:5vh;"  class="ch-txt">Admin Kontrol Paneli</h2>
+
+
+<div class="row">
+    <div class="col-md-6 col-xs-6 " style="margin-left:4%; background-color:rgba(110, 96, 143, 0.81);  line-height:2.42857143; border-radius:50px 10px 10px 10px; overflow-y:auto; height:60vh; margin-right:5px;">
+        <div class="row">
+            <div class="col-md-6 col-xs-6 col-md-offset-4 col-xs-offset-2">
+                <h2 style="color:#79add2"><span>RAPORLAR</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            <ul>
+                <li>
+                    <h4 style="color:#79add2"><span>Satış Verileri</span></h4>
+                    <ul>
+                        <li><a href="@Url.Action("LastTenSales","AdminData")" target="_blank" style="color:#dddada;">Son 10 Satış</a></li>
+                        <li><a href="@Url.Action("LastTwoMonthsSales","AdminData")" target="_blank" style="color:#dddada;">Son 2 Ayın Satışları</a></li>
+                        <li><a href="@Url.Action("TopSellingProducts","AdminData")" target="_blank" style="color:#dddada;">En Çok Satılan 5 Ürün</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <hr style="width:75%;" />
+            <ul>
+                <li>
+                    <h4 style="color:#79add2"><span>Kullanıcı Verileri</span></h4>
+                    <ul>
+                        <li><a href="@Url.Action("ListUsers","AdminData")" target="_blank" style="color:#dddada;">Kullanıcıları Listele</a></li>
+                        <li><a href="@Url.Action("EditUsers","AdminData")" target="_blank" style="color:#dddada;">Kullanıcıları Düzenle</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <hr style="width:75%;" />
+            <ul>
+                <li>
+                    <h4 style="color:#79add2"><span>Admin Verileri</span></h4>
+                    <ul>
+                        <li><a href="@Url.Action("ListAdmins","AdminData")"  target="_blank" style="color:#dddada;">Adminleri Listele</a></li>
+                        <li><a href="@Url.Action("EditAdmin","AdminData")" target="_blank" style="color:#dddada;">Adminleri Düzenle</a></li>
+                        <li><a href="@Url.Action("AddAdmin","AdminData")" target="_blank" style="color:#dddada;">Admin Ekle</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-5 col-xs-5" style="background-color:rgba(110, 96, 143, 0.81); line-height:2.42857143; overflow-y:auto; border-radius:10px 10px 50px 10px; height:60vh;">
+        <div class="row">
+            <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-1">
+                <h2 style="color:#79add2"><span>DÜZENLEME</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            <ul>
+                <li>
+                    <h4 style="color:#79add2"><span>Ürünler</span></h4>
+                    <ul>
+                        <li><a href="@Url.Action("ListProducts","AdminProduct")" target="_blank" style="color:#dddada;">Ürünleri Listele</a></li>
+                        <li><a href="@Url.Action("EditProduct","AdminProduct")" target="_blank" style="color:#dddada;">Ürünleri Düzenle</a></li>
+                        <li><a href="@Url.Action("AddProduct","AdminProduct")" target="_blank" style="color:#dddada;">Ürün Ekle</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+            <hr style="width:75%;" />
+            <ul>
+                <li>
+                    <h4 style="color:#79add2"><span>Kullanıcı</span></h4>
+                    <ul>
+                        <li><a href="@Url.Action("ListReviews","AdminProduct")" target="_blank" style="color:#dddada;">Yorumları Listele</a></li>
+                        <li><a href="@Url.Action("EditReview","AdminProduct")" target="_blank"  style="color:#dddada;">Yorumları Düzenle</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

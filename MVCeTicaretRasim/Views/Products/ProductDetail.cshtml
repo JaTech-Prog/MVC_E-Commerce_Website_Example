@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        @{
+            var item = TempData["ProductDetail"] as MVCeTicaretRasim.Models.Product;
+
+            <div class="col-md-6">
+                <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" class="img-thumbnail" style="background-color:#dddada;" />
+            </div>
+            <div class="col-md-6">
+                <h2 style="color:#dddada;">@item.ProductName</h2>
+                <h4 style="color:#dddada;">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <span class="glyphicon glyphicon-star "></span>
+                    }
+                </h4>
+                <p class="lead" style="color:#dddada;">Fiyat: <b>@string.Format("{0:c2}", item.UnitPrice)</b></p>
+                <span style="background-color:rgba(88, 123, 172, 0.89); color:white;" class="lead">Stok Miktarı: <b>@item.UnitsInStock @item.QuantityPerUnit</b></span>
+                
+                
+                <p class="lead">
+                    <b style="color:#dddada;">Miktar : </b>
+                    <input type="number" min="1" value = 1 style="color:#28294f" max="@item.UnitsInStock" />
+                </p>
+                
+                @if (item.UnitsInStock == 0)
+                {
+                    @Html.ActionLink("Sepete Ekle", "AddToCart", "Shopping", new { id = item.ProductID }, new { @class = "btn btn-success", disabled = "disabled" })
+                }
+                else
+                {
+                    @Html.ActionLink("Sepete Ekle", "AddToCart", "Shopping", new { id = item.ProductID}, new { @class = "btn btn-success" })
+               }
+
+                @Html.ActionLink("İstek Listesine Ekle", "AddToWishlist", "Shopping", new { id = item.ProductID }, new { @class = "btn btn-warning" })
+
+
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <ul class="nav nav-tabs" style="border-color:#8a89ea">
+                <li class="active">
+                    <a href="#description" data-toggle="tab">Açıklama</a>
+                </li>
+                <li>
+                    <a href="#reviews" data-toggle="tab">Yorumlar</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" style="color:#dddada; margin-top:5px;" id="description">
+                    @Html.Raw(item.LongDescription)
+                </div>
+                <div class="tab-pane fade" id="reviews" style="margin-top:10px;">
+
+                    <ul class="list-group">
+                        @{
+                            foreach (var review in TempData["Reviews"] as IEnumerable<MVCeTicaretRasim.Models.Review>)
+                            {
+                                <li class="list-group-item" style="background-color:#949cae; border-color:#515d80;">
+                                    <p class="lead" style="color:#27213d;"><span class="glyphicon glyphicon-user"></span> @review.Name </p>
+                                    <p style="color:#27213d;"><span class="glyphicon glyphicon-star"></span> @review.Rates / 5</p>
+                                    <p style="color:#27213d;"> <span class="glyphicon glyphicon-comment"></span>    @review.Reviews </p>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <hr style="border-color:#8a89ea" />
+                    @if (Session["OnlineKullanici"] != null)
+                    {
+                        <h4 style="color:#dddada;">YORUM EKLE</h4>
+                        <hr style="border-color:#8a89ea" />
+                        using (Html.BeginForm("AddReview", "Products", new { id = item.ProductID }, FormMethod.Post))
+                        {
+                            <p style="color:#dddada;">Ürünü Oyla:</p>
+                            <input type="number" name="Rating" min="1" max="5" value="5" class="form-control" />
+                                <br />
+                                <p style="color:#dddada;">Adınız: </p>
+                                <input type="text" name="Name" class="form-control" />
+                                <br />
+                                <p style="color:#dddada;">Yorum: </p>
+                                <textarea rows="3" name="Review" class="form-control"></textarea>
+                                <br />
+                                <input type="submit" class="btn btn-primary form-control" value="Gönder" />
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

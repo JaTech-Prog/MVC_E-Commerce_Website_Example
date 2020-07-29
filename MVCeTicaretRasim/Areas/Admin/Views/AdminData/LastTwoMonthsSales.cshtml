@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Son 2 Ay Satılan";
+}
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align:center; font:bold; font-size:4vh;" class="ch-txt2">Son 2 Ay Satılanlar</h2>
+
+
+<table class="table table-hover" style="background-color:#7c80c1; border:solid; border-color:#1a1157">
+    <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+        <tr>
+            <td>
+                Ürün Görseli
+            </td>
+            <td>
+                Ürün Adı
+            </td>
+            <td>
+                Ürün Fiyatı
+            </td>
+            <td>
+                Satın Alan
+            </td>
+            <td>
+                Stok Miktarı
+            </td>
+            <td>
+                Satılma Tarihi
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in TempData["LastTwoMonths"] as IEnumerable<MVCeTicaretRasim.Models.Order>)
+            {
+                <tr style="color:rgba(48, 44, 98, 0.91); font-weight:bold;">
+                    <td style="border-color:#1a1157">
+                        <img src="@Url.Content(item.OrderDetail.Product.ImageUrl)" alt="@Url.Content(item.OrderDetail.Product.AltText)" class="img-thumbnail" style="background-color:#1a1157; border-color:blueviolet; width:60px;" />
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.OrderDetail.Product.ProductName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @string.Format("{0:c2}", item.OrderDetail.Product.UnitPrice)
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.OrderDetail.Customer.UserName
+                    </td>
+                    <td style="border-color:#1a1157">
+
+                        @item.OrderDetail.Product.UnitsInStock
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.OrderDate
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

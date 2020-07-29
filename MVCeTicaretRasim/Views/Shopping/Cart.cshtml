@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Sepet";
+}
+<h2 style="text-align:center; color:#dddada;">Sepetiniz <span class="glyphicon glyphicon-shopping-cart"></span></h2>
+
+<table class="table table-hover" style="background-color:#7c80c1; border:solid; border-color:#1a1157">
+    <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+        <tr>
+            <td>
+                Sepetten Çıkar
+            </td>
+            <td>
+                Ürün Görseli
+            </td>
+            <td>
+                Ürün Adı
+            </td>
+            <td>
+                Ürün Fiyatı
+            </td>
+            <td>
+                Ürün Miktarı
+            </td>
+            <td>
+                Miktar Güncelle
+            </td>
+            <td>
+                İstek Listesine Ekle
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            decimal toplamTutar = 0;
+            foreach (var item in TempData["OrderDetails"] as IEnumerable<MVCeTicaretRasim.Models.OrderDetail>)
+            {
+                toplamTutar += Convert.ToDecimal(item.Quantity * item.UnitPrice);
+                <tr style="color:rgba(48, 44, 98, 0.91); font-weight:bold;">
+                    <td style="border-color:#1a1157">
+                        <h2 style="text-align:center;"><a href="@Url.Action("RemoveFromCart",new{ id = item.ProductID})"><span style="color:#1d116c;" class="glyphicon glyphicon-remove"></span></a></h2>
+                    </td>
+                    <td style="border-color:#1a1157">
+                        <img src="@Url.Content(item.Product.ImageUrl)" alt="@Url.Content(item.Product.AltText)" class="img-thumbnail" style="background-color:#1a1157;  border-color:blueviolet; width:60px;" />
+
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.Product.ProductName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @string.Format("{0:c2}", item.UnitPrice)
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.Quantity
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @using (Html.BeginForm("UpdateQuantity", "Shopping", new { id = item.ProductID }, FormMethod.Post))
+                        {
+                            <input type="number" name="Quantity" min="1" max="@item.Product.UnitsInStock" value="@item.Quantity" style="background-color:rgba(48, 44, 98, 0.91); font-weight:bold; color:#dddada;" /> <button type="submit" class="btn btn-default" style="background-color:#7c80c1; font-size:smaller; border:outset; "><span class="glyphicon glyphicon-check"></span></button>
+                        }
+                        
+                    </td>
+                    <td style="border-color:#1a1157">
+                        <h2 style="text-align:center;"><a href="@Url.Action("AddToWishlistFromCart",new { id = item.ProductID})"><span style="color:#1d116c;" class="glyphicon glyphicon-th-list"></span></a></h2>
+                    </td>
+                </tr>
+
+            }
+            <tr>
+                <td colspan="7" style="text-align:right; color:#1a1157; border-color:#1a1157;"><b>Ödenmesi Gereken Toplam Tutar: @string.Format("{0:c2}", toplamTutar)</b></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-9">
+        @Html.ActionLink("Siparişi Tamamla", "ContinueShopping", "Shopping", null, new { @class = "btn btn-success form-control" })
+
+    </div>
+</div>

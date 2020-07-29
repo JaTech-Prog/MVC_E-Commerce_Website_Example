@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        @{
+            foreach (var item in TempData["ProductList"] as IEnumerable<MVCeTicaretRasim.Models.Product>)
+            {
+                <div class="col-md-3">
+                    <div class="thumbnail" style=" border-color:#1a1157; background-color:#515d80;">
+                        <a href="@Url.Action("ProductDetail", new { id = item.ProductID})"><img class="gallery" src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" /></a>
+                        <div class="caption">
+                            <a href="@Url.Action("ProductDetail", new { id = item.ProductID})"><h4 style="height:55px; color:#c4e0f8">@item.ProductName - <b>@string.Format("{0:c2}", item.UnitPrice)</b></h4></a>
+                            <p style="height:100px; color:#f0f7f1; overflow:auto;">@item.ShortDescription</p>
+                            <a href="@Url.Action("ProductDetail", new { id = item.ProductID})" class="btn btn-primary">Ürün Detayı</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+

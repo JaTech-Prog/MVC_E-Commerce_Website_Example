@@ -1,0 +1,112 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+hr {
+    border-color: #8a89ea;
+}
+
+h2,
+h4{
+    color:#dddada;
+}
+
+label{
+     color:#dddada;
+}
+
+ul{
+    border-color:#8a89ea;
+}
+
+.gallery img {
+    filter: grayscale(100);
+}
+
+    .gallery img:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+
+
+.cls-rapor{
+    height:100%;
+}
+.ch-txt {
+    animation: color infinite 16s;
+}
+
+.ch-txt2 {
+    animation: color2 infinite 6s;
+}
+
+.admin-baslik{
+    text-align: center;
+    font: bold;
+    font-size: 4vh;
+}
+
+
+@keyframes color {
+    0% {
+        color: #8a89ea;
+    }
+
+    25% {
+        color: darkblue;
+    }
+
+    50% {
+        color: #8a89ea;
+    }
+
+    75% {
+        color: darkblue;
+    }
+    100% {
+        color: #8a89ea;
+    }
+
+}
+
+@keyframes color2 {
+    0% {
+        color: #8a89ea;
+    }
+
+    25% {
+        color: #79add2;
+    }
+
+    50% {
+        color: #8a89ea;
+    }
+
+    75% {
+        color: #79add2;
+    }
+    100% {
+        color: #8a89ea;
+    }
+}

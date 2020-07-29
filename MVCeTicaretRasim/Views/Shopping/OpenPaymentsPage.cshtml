@@ -1,0 +1,102 @@
+﻿@model MVCeTicaretRasim.Models.Customer
+
+@{
+    ViewBag.Title = "Ödeme Seçenekleri";
+}
+
+<h2>Ödeme Seçenekleri</h2>
+
+<div class="row" style="margin-top:50px;">
+    @{
+
+        using (Html.BeginForm("CompleteShopping", "Shopping", FormMethod.Post))
+        {
+            foreach (var item in TempData["PaymentTypes"] as IEnumerable<MVCeTicaretRasim.Models.PaymentType>)
+            {
+                <label for="PayType_@item.PayTypeID">
+                    <input type="radio" name="PaymentType" value="@item.PayTypeID" id="PayType_@item.PayTypeID" />
+                    @item.TypeName
+
+                </label><br />
+
+            }
+            <hr />
+
+            <div class="panel-heading">
+                <h4>Adres Bilgileri</h4>
+            </div>
+            <div class="panel-body">
+
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label> Ad :</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label> Soyad :</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label> E-mail :</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label> Telefon :</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.Mobile1, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label> Adres :</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(x => x.Address1, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label> Şehir :</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label> Ülke :</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+                    </div>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class=" col-md-6 col-md-offset-2">
+                        <input type="submit" class="btn btn-success form-control" value="Siparişi Onayla" />
+                    </div>
+                </div>
+
+
+
+            </div>
+        }
+
+
+    }
+</div>

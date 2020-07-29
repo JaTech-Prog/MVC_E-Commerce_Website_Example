@@ -1,0 +1,98 @@
+﻿@model MVCeTicaretRasim.Models.Review
+
+@{
+    ViewBag.Title = "ReviewEdit";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align: center; font: bold; font-size: 4vh;" class="ch-txt2">Yorumu Düzenle</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+
+
+            @using (Html.BeginForm("ReviewEdit", "AdminProduct", FormMethod.Post))
+            {
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Review ID : </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.ReviewID, new { @class = "form-control", disabled = "disable" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Ürün Adı : </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Product.ProductName, new { @class = "form-control", disabled = "disable" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label style="color:#dddada;">Kullanıcı ID : </label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.CustomerID, new { @class = "form-control", disabled = "disable" })
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Kullanıcı Adı :</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", disabled="disable" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Yorum : </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Reviews, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Puan : </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Rates, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="row" style="margin-top:5px;">
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-2">
+                                <label style="color:#dddada;">Silindi : </label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextAreaFor(x => x.IsDeleted, new { @class = "form-control" ,disabled="disable"})
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="margin-top:15px;">
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <input type="submit" class="form-control btn btn-success" style="background-color:#1d116c;  border-color:#1a1157" value="Güncelle" />
+                            </div>
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align: center; font: bold; font-size: 4vh;" class="ch-txt2 ">Ürün Listesi Düzenle</h2>
+
+<table class="table table-hover" style="background-color:#7c80c1; border:solid; border-color:#1a1157">
+    <thead style="color:#1a1157; font-weight:bold; font-size:larger;">
+        <tr style="overflow-y:auto;">
+            <td></td>
+            <td>
+                Ürün Adı
+            </td>
+            <td>
+                Ürün Fiyatı
+            </td>
+            <td>
+                Ürün Miktarı
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in TempData["EditProduct"] as IEnumerable<MVCeTicaretRasim.Models.Product>)
+            {
+                <tr style="color:rgba(48, 44, 98, 0.91); font-weight:bold;">
+                    <td style="border-color:#1a1157">
+                        <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" class="img-thumbnail" style="background-color:#1a1157; border-color:blueviolet; width:60px;" />
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.ProductName
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @string.Format("{0:c2}", item.UnitPrice)
+                    </td>
+                    <td style="border-color:#1a1157">
+                        @item.UnitsInStock
+                    </td>
+                    <td style="border-color:#1a1157">
+                        <a href="@Url.Action("ProductEdit", new { id = item.ProductID})" class="btn btn-warning">Düzenle</a>
+                    </td>
+                    <td style="border-color:#1a1157">
+                        <a href="@Url.Action("ProductDelete", new { id = item.ProductID })" class="btn btn-danger">Sil</a>
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

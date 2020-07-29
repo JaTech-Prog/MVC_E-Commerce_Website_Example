@@ -1,0 +1,116 @@
+﻿@model MVCeTicaretRasim.Models.Product
+
+@{
+    ViewBag.Title = "ProductEdit";
+}
+
+@Styles.Render("~/Content/Site.css")
+<h2 style="text-align: center; font: bold; font-size: 4vh;" class="ch-txt2 ">Ürünü Düzenle</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+
+
+            @using (Html.BeginForm("ProductEdit", "AdminProduct", FormMethod.Post))
+            {
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Product ID : </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.ProductID, new { @class = "form-control", disabled = "disable" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label style="color:#dddada;">Ürün Adı : </label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Satıcı : </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Supplier.CompanyName, new { @class = "form-control" , disabled = "disable"})
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Ürün Fiyatı :</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">Boyut : </label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.Size, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-2">
+                                <label style="color:#dddada;">Stok Miktarı: </label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-2">
+                                <label style="color:#dddada;">Satıldı : </label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.UnitOnOrder, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-2">
+                                <label style="color:#dddada;">Kısa açıklama : </label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextAreaFor(x => x.ShortDescription, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-2">
+                                <label style="color:#dddada;">Açıklama : </label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextAreaFor(x => x.LongDescription, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:15px;">
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <input type="submit" class="form-control btn btn-success" style="background-color:#1d116c;  border-color:#1a1157" value="Güncelle" />
+                            </div>
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>

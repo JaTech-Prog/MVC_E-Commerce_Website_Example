@@ -8,25 +8,25 @@
         <div class="col-md-12">
             @using (Html.BeginForm("Register", "Login", FormMethod.Post))
             {<div class="row" style="margin-top:5px;">
-                <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <label style="color:#dddada;">İsim: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="FirstName" placeholder="İsminizi Giriniz" required style="text-align:center" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-top:5px;">
                     <div class="col-md-2 col-md-offset-2">
-                        <label style="color:#dddada;">İsim: </label>
+                        <label style="color:#dddada;">Soyisim: </label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="FirstName" placeholder="İsminizi Giriniz" required style="text-align:center" />
+                        <input type="text" class="form-control" name="LastName" placeholder="Soyisminizi Giriniz" required style="text-align:center" />
                     </div>
                 </div>
-            </div>
-
-
-            <div class="row" style="margin-top:5px;">
-                <div class="col-md-2 col-md-offset-2">
-                    <label style="color:#dddada;">Soyisim: </label>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="LastName" placeholder="Soyisminizi Giriniz" required style="text-align:center" />
-                </div>
-            </div>
                 <div class="row" style="margin-top:5px;">
                     <div class="form-group">
                         <div class="col-md-2 col-md-offset-2">
@@ -66,7 +66,7 @@
                             Erkek: <input type="checkbox" name="Gender" />
                         </div>
                         <div class="col-md-2" style="color:#dddada;">
-                            Kadın: <input type="checkbox"/>
+                            Kadın: <input type="checkbox" />
                         </div>
                     </div>
                 </div>

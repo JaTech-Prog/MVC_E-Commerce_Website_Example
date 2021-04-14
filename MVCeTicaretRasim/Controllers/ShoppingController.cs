@@ -14,7 +14,7 @@ namespace MVCeTicaretRasim.Controllers
         public ActionResult AddToCart(int id)
         {
             if (Session["OnlineKullanici"] == null)
-            {
+            {   
                 return RedirectToAction("Login", "Login");
             }
 

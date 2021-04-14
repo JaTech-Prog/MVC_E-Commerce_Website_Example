@@ -23,7 +23,6 @@ namespace MVCeTicaretRasim.Controllers
 
             Customer customer = db.Customers.Where(x => x.UserName == username && x.Password == password).FirstOrDefault();
 
-
             if (customer != null)
             {
                 Session["OnlineKullanici"] = customer.UserName;

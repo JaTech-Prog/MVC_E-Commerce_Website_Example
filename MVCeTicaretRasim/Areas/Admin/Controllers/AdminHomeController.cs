@@ -13,10 +13,11 @@ namespace MVCeTicaretRasim.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            if (Session["OnlineAdmin"] != null)
-                return View();
-            else
-                return RedirectToAction("Login", "AdminLogin");
+            //if (Session["OnlineAdmin"] != null)
+            //    return View();
+            //else
+            //    return RedirectToAction("Login", "AdminLogin");
+            return View();
         }
     }
 }
